@@ -1,0 +1,7 @@
+node_modules/
+backend/voyago.sqlite
+backend/voyago.sqlite-shm
+backend/voyago.sqlite-wal
+.env
+.DS_Store
+npm-debug.log*

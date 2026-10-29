@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Voyago — Trips worth planning for</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="logo-mark"></span>Voyago</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-view="home">Explore</a>
+      <a href="#" class="nav-link" data-view="dashboard" id="nav-dashboard">My trips</a>
+      <span id="nav-auth-area"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HOME VIEW ===================== -->
+<section class="view active" id="view-home">
+
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>Go somewhere<br/>that changes you.</h1>
+        <p class="hero-sub">Twelve trips, hand-picked and priced honestly — from cliffside sunsets in Santorini to glacier hikes in Iceland. Book in minutes, no middlemen.</p>
+        <div class="hero-stats">
+          <div><div class="stat-num">12</div><div class="stat-label">curated trips</div></div>
+          <div><div class="stat-num">9</div><div class="stat-label">countries</div></div>
+          <div><div class="stat-num">4.7</div><div class="stat-label">avg. rating</div></div>
+        </div>
+      </div>
+      <div class="hero-card" id="hero-card">
+        <!-- filled by JS with a featured destination -->
+      </div>
+    </div>
+  </header>
+
+  <div class="filter-bar wrap">
+    <div class="field">
+      <label for="search-input">Search</label>
+      <input id="search-input" type="text" placeholder="Try “Japan” or “island”" />
+    </div>
+    <div class="field">
+      <label for="category-select">Category</label>
+      <select id="category-select">
+        <option value="All">All categories</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="sort-select">Sort by</label>
+      <select id="sort-select">
+        <option value="">Recommended</option>
+        <option value="price_asc">Price: low to high</option>
+        <option value="price_desc">Price: high to low</option>
+        <option value="rating">Highest rated</option>
+      </select>
+    </div>
+    <button class="btn btn-ghost" id="clear-filters">Clear</button>
+  </div>
+
+  <div class="section wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">The full list</p>
+        <h2>Trips you can book today</h2>
+      </div>
+      <div class="result-count" id="result-count"></div>
+    </div>
+    <div class="grid" id="destination-grid">
+      <div class="empty-state"><span class="loading-dot"></span>Loading destinations…</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== DASHBOARD VIEW ===================== -->
+<section class="view" id="view-dashboard">
+  <div class="section wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Your account</p>
+        <h2>My trips</h2>
+      </div>
+    </div>
+    <div id="bookings-list"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Voyago — a college mini-project. Not a real booking service.</span>
+    <span>Built with Node, Express, SQLite &amp; vanilla JS</span>
+  </div>
+</footer>
+
+<!-- ===================== AUTH MODAL ===================== -->
+<div class="overlay" id="auth-overlay">
+  <div class="modal">
+    <button class="modal-close" data-close="auth-overlay">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Sign in</button>
+      <button class="auth-tab" data-tab="register">Create account</button>
+    </div>
+
+    <div class="form-error" id="auth-error"></div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" required autocomplete="current-password" />
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+    <form id="register-form" style="display:none">
+      <div class="form-group">
+        <label for="register-name">Name</label>
+        <input id="register-name" type="text" required autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="register-email">Email</label>
+        <input id="register-email" type="email" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="register-password">Password</label>
+        <input id="register-password" type="password" required minlength="6" autocomplete="new-password" />
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Create account</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== DESTINATION DETAIL / BOOKING MODAL ===================== -->
+<div class="overlay" id="detail-overlay">
+  <div class="modal modal-wide" id="detail-modal-content">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
